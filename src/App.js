@@ -1,12 +1,24 @@
-import ListPage from "./pages/ListPage";
+import { useCallback, useState } from "react";
 import data from "./data.json";
+import ListPage from "./pages/ListPage";
+import Category from "./components/Category";
 
-function App() {
+const App = () => {
+  const [list, setList] = useState(data);
+  const filterCategory = useCallback(
+    (name) => {
+      // console.log("check name: ", name);
+      const list_category = data.filter((item) => item.category === name);
+      setList(list_category);
+    },
+    []
+  );
   return (
     <>
-      <ListPage list={data} />
+      <Category filterCategory={filterCategory} />
+      <ListPage list={list} />
     </>
   );
-}
+};
 
 export default App;

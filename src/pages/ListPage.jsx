@@ -1,27 +1,15 @@
-import React, { useCallback, useState } from "react";
-import Category from "../components/Category";
+import React from "react";
 import ProductItem from "../components/ProductItem";
 
 const ListPage = ({ list }) => {
-  //   console.log(list);
-  const [products, setProducts] = useState(list);
-  //   console.log("check category: ", category);
-  const filterCategory = useCallback((name) => {
-    // console.log("check name: ", name);
-    const list_category = list.filter((item) => item.category === name);
-    setProducts(list_category);
-  }, []);
-
+  console.log("re-render Component ListPage");
   return (
     <div>
-      <Category filterCategory={filterCategory} />
-      <div>
-        {products.map((item) => (
-          <ProductItem key={item.id} product={item} />
-        ))}
-      </div>
+      {list.map((item) => (
+        <ProductItem key={item.id} product={item} />
+      ))}
     </div>
   );
 };
 
-export default ListPage;
+export default React.memo(ListPage);

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Category = ({ filterCategory }) => {
-  //   console.log("re-render Component Category");
+  console.log("re-render Component Category");
   return (
     <div className="category">
       <button onClick={() => filterCategory("Document")}>Document</button>
